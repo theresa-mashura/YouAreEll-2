@@ -11,21 +11,22 @@ public class YouAreEll {
     }
 
     public static void main(String[] args) {
-        // hmm: is this Dependency Injection?
+         // hmm: is this Dependency Injection?
         YouAreEll urlhandler = new YouAreEll(
-            new TransactionController(
-                new MessageController(), new IdController()
-        ));
-        System.out.println(urlhandler.MakeURLCall("/ids", "GET", ""));
-        System.out.println(urlhandler.MakeURLCall("/messages", "GET", ""));
+            new TransactionController(new MessageController(), new IdController())
+        );
+        //System.out.println(urlhandler.MakeURLCall("/ids", "GET", ""));
+        //System.out.println(urlhandler.MakeURLCall("/messages", "GET", ""));
     }
 
     public String get_ids() {
-        return tt.makecall("/ids", "GET", "");
+        //return tt.makecall("/ids", "GET", "");
+        return null;
     }
 
     public String get_messages() {
-        return MakeURLCall("/messages", "GET", "");
+        //return MakeURLCall("/messages", "GET", "");
+        return null;
     }
 
 
