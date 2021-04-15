@@ -12,10 +12,10 @@ public class TransactionController {
     public TransactionController(MessageController m, IdController j) {}
 
     public List<Id> getIds() {
-        return null;
+        return idCtrl.getIds();
     }
-    public String postId(String idtoRegister, String githubName) {
-        Id tid = new Id(idtoRegister, githubName);
+    public String postId(String idToRegister, String gitHubName) {
+        Id tid = new Id(idToRegister, gitHubName);
         tid = idCtrl.postId(tid);
         return ("Id registered.");
     }

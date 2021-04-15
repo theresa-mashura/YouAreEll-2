@@ -1,25 +1,35 @@
 import controllers.IdController;
-import controllers.ServerController;
 import models.Id;
 import org.junit.Test;
-import sun.jvm.hotspot.debugger.sparc.SPARCThreadContext;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class TestIdController {
 
     @Test
     public void testGetIds() {
         // Given
-        ServerController sc = ServerController.getInstance();
         IdController ic = new IdController();
 
         // When
-        String jsonString = sc.get(ic.getPath());
-        ArrayList<Id> idList = ic.getIds(jsonString);
+        ArrayList<Id> idList = ic.getIds();
 
         // Then
         System.out.println(idList.get(0));
+    }
+
+    @Test
+    public void testAddToMap() {
+        // Given
+        IdController ic = new IdController();
+
+        // When
+        ic.addToMap();
+        HashMap<String, Id> idMap = ic.getAllIds();
+
+        // Then
+        System.out.println(idMap.get("highfructosecornsyrup"));
     }
 
     @Test

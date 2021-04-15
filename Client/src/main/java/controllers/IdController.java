@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -13,17 +14,28 @@ public class IdController {
     private String path = "/ids";
     ServerController sc = ServerController.getInstance();
 
-    Id myId;
-
     public String getPath() {
         return this.path;
     }
 
-    public ArrayList<Id> getIds(String jsonString) {
+    public HashMap<String, Id> getAllIds() {
+        return this.allIds;
+    }
+
+    public void addToMap() {
+        allIds = new HashMap<String, Id>();
+        for (Id id : this.getIds()) {
+            allIds.put(id.getGithub(), id);
+        }
+    }
+
+    public ArrayList<Id> getIds() {
+        String jsonResult = sc.MakeURLCall(this.path, ServerController.RequestType.GET, "");
+
         // Read Object List from JSON Array String using Jackson
         try {
             ObjectMapper mapper = new ObjectMapper();
-            ArrayList<Id> ids = mapper.readValue(jsonString, new TypeReference<ArrayList<Id>>() {
+            ArrayList<Id> ids = mapper.readValue(jsonResult, new TypeReference<ArrayList<Id>>() {
             });
             return ids;
         } catch (IOException i) {
