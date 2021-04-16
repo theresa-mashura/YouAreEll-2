@@ -10,6 +10,7 @@ import java.util.List;
 import controllers.IdController;
 import controllers.MessageController;
 import controllers.TransactionController;
+import sun.java2d.pipe.SpanShapeRenderer;
 import youareell.YouAreEll;
 
 // Simple Shell is a Console view for youareell.YouAreEll.
@@ -73,9 +74,7 @@ public class SimpleShell {
 
             // COMMANDS:
                 // history - prints out items in history ArrayList with an index number
-                // ids - returns a formatted list of ids available to the user
-                    // ids your_name your_github_id
-                    // doing 2x with 2 different names & same github id = name on server gets changed
+                // ids
                 // messages - returns the last 20 messages
                     // messages your_github_id - returns last 20 messages sent to YOU
                     // send your_github_id 'Hello World' - post new message on timeline
@@ -95,11 +94,26 @@ public class SimpleShell {
                 // Specific Commands.
 
                 // ids
-                if (list.contains("ids")) {
-                    String results = urll.get_ids();
-                    SimpleShell.prettyPrint(results);
-                    continue;
-                }
+                    // ids your_name your_github_id - sends POST request to register your github id
+                        // If done second time, with different name, updates name via PUT request
+                    // ids - returns a formatted list of ids available to the user
+//                if (list.contains("ids") && list.size() == 3) {
+//                    String results;
+//
+//                    System.out.println("\nName in list: " + history.contains(list.get(1)));
+//                    System.out.println("Git in List: " + history.contains(list.get(2)));
+//
+//                    if (!history.contains(list.get(1)) && history.contains(list.get(2))) {
+//                        results = urll.put_id(list.get(1), list.get(2));
+//                    } else {
+//                        results = urll.post_id(list.get(1), list.get(2));
+//                    }
+//                    SimpleShell.prettyPrint(results);
+//                } else if (list.contains("ids")) {
+//                    String results = urll.get_ids();
+//                    SimpleShell.prettyPrint(results);
+//                    continue;
+//                }
 
                 // messages
                 if (list.contains("messages")) {
